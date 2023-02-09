@@ -23,4 +23,11 @@ public class Vectors {
 
     public void set(int i, double value) { vector[i] = value; }
 
+    public void print() {
+        for (int i = 0; i < rank; i++) {
+            System.out.println(vector[i] + " ");
+        }
+        System.out.println();
+    }
+
 }

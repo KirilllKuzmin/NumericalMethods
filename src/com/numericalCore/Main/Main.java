@@ -2,7 +2,7 @@ package com.numericalCore.Main;
 
 
 
-import com.numericalCore.task0.Program.Program;
+import com.numericalCore.task1.Program.Program;
 
 import java.io.FileNotFoundException;
 

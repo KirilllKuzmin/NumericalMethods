@@ -32,4 +32,20 @@ public class Matrix {
         return result;
     }
 
+    public void print() {
+
+        for (int i = 0; i < rank; i++) {
+            for (int j = 0; j < rank; j++)
+                System.out.print(matrix[i][j] + " ");
+
+            System.out.println();
+        }
+    }
+
+    public double get(int i, int j) { return matrix[i][j]; }
+
+    public int getRank() { return rank; }
+
+    public void set(int i, int j, double value) { matrix[i][j] = value; }
+
 }

@@ -4,13 +4,13 @@ package com.numericalCore.task1.Program;
 
 import com.numericalCore.Objects.Matrix;
 import com.numericalCore.Objects.Vectors;
+import com.numericalCore.task1.Methods.SPMethod;
 
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
-
 
 
 public class Program {
@@ -40,7 +40,7 @@ public class Program {
 
         Vectors approximate = new Vectors(rank, startApproximate);
 
-        //System.out.println("eigen value: " + PowerMethods.start(matrix, approximate, eps));
+        System.out.println("eigen value: " + SPMethod.start(matrix, approximate, eps));
 
     }
 
