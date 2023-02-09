@@ -50,6 +50,8 @@ public class PowerMethods {
 
         double lastEigenValue = eigenValue + 1;
 
+        approximateVector = getApproximation(y);
+
         while (Math.abs(eigenValue - lastEigenValue) > eps) {
 
             y = matrix.multByVector(approximateVector);
@@ -59,6 +61,9 @@ public class PowerMethods {
 
         }
 
+        for (int i = 0; i < approximateVector.getRank(); i++)
+            System.out.println(approximateVector.get(i));
+        System.out.println();
         return eigenValue;
 
     }
