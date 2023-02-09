@@ -1,5 +1,7 @@
 package com.numericalCore.task0.Program;
 
+
+
 import com.numericalCore.task0.Methods.PowerMethods;
 import com.numericalCore.task0.Objects.Matrix;
 import com.numericalCore.task0.Objects.Vectors;
@@ -11,7 +13,7 @@ import java.util.Scanner;
 
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main() {
 
         Scanner sc = new Scanner(System.in);
         sc.useLocale(Locale.UK);

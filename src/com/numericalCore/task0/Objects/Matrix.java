@@ -1,5 +1,7 @@
 package com.numericalCore.task0.Objects;
 
+
+
 public class Matrix {
 
     private final int rank;
