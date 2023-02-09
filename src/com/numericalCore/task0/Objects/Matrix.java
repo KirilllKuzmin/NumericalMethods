@@ -25,16 +25,9 @@ public class Matrix {
 
         Vectors result = new Vectors(vector.getRank());
 
-        double sum = 0;
-
-        for (int i = 0; i < rank; i++) {
-            for (int j = 0; j < rank; j++) {
-                sum += matrix[i][j] * vector.get(j);
-            }
-            result.set(i, sum);
-
-            sum = 0;
-        }
+        for (int i = 0; i < rank; i++)
+            for (int j = 0; j < rank; j++)
+                result.set(i, result.get(i) + matrix[i][j] * vector.get(j));
 
         return result;
     }
