@@ -3,8 +3,8 @@ package com.numericalCore.task0.Program;
 
 
 import com.numericalCore.task0.Methods.PowerMethods;
-import com.numericalCore.task0.Objects.Matrix;
-import com.numericalCore.task0.Objects.Vectors;
+import com.numericalCore.Objects.Matrix;
+import com.numericalCore.Objects.Vectors;
 
 import java.io.File;
 import java.io.FileNotFoundException;
