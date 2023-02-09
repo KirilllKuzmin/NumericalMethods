@@ -6,6 +6,8 @@ import com.numericalCore.task0.Methods.PowerMethods;
 import com.numericalCore.task0.Objects.Matrix;
 import com.numericalCore.task0.Objects.Vectors;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -13,9 +15,9 @@ import java.util.Scanner;
 
 public class Program {
 
-    public static void main() {
+    public static void main() throws FileNotFoundException {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(new File("resources/task0/courseInput.txt"));
         sc.useLocale(Locale.UK);
 
         int rank = sc.nextInt();
@@ -32,13 +34,13 @@ public class Program {
             }
         }
 
-        double eps = Math.pow(0.1, 6);
+        double eps = Math.pow(10, -6);
 
         Matrix matrix = new Matrix(rank, A);
 
         Vectors approximate = new Vectors(rank, startApproximate);
 
-        System.out.println(PowerMethods.start(matrix, approximate, eps));
+        System.out.println("eigen value: " + PowerMethods.start(matrix, approximate, eps));
 
     }
 
