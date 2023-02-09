@@ -59,22 +59,23 @@ public class SPMethod {
         Matrix transpositionMatrix = transposition(matrix);
         Vectors transpositionEigenVector = transpositionMatrix.multByVector(startEigenVector);
 
-        double eigenValue = multByScalar(eigenVector, transpositionEigenVector) / multByScalar(startEigenVector, transpositionEigenVector);
-        double lastEigenValue = eigenValue + 1;
-
         eigenVector = normalizationVector(eigenVector);
         transpositionEigenVector = normalizationVector(transpositionEigenVector);
 
-        while (Math.abs(lastEigenValue - eigenValue) > eps) {
-            Vectors newEigenVector = matrix.multByVector(eigenVector);
+        double eigenValue = multByScalar(eigenVector, transpositionEigenVector) / multByScalar(startEigenVector, transpositionEigenVector);
+        double lastEigenValue = eigenValue + 1;
 
+        while (Math.abs(lastEigenValue - eigenValue) > eps) {
+
+            Vectors newEigenVector = matrix.multByVector(eigenVector);
             transpositionEigenVector = transpositionMatrix.multByVector(transpositionEigenVector);
+
+            eigenVector = normalizationVector(newEigenVector);
+            transpositionEigenVector = normalizationVector(transpositionEigenVector);
 
             lastEigenValue = eigenValue;
             eigenValue = multByScalar(newEigenVector, transpositionEigenVector) / multByScalar(eigenVector, transpositionEigenVector);
 
-            eigenVector = normalizationVector(newEigenVector);
-            transpositionEigenVector = normalizationVector(transpositionEigenVector);
         }
 
         for (int i = 0; i < eigenVector.getRank(); i++)
