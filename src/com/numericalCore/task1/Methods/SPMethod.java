@@ -3,6 +3,9 @@ package com.numericalCore.task1.Methods;
 import com.numericalCore.Objects.Matrix;
 import com.numericalCore.Objects.Vectors;
 
+import java.io.*;
+import java.util.Scanner;
+
 public class SPMethod {
 
     private static double norm(Vectors vector){
@@ -51,15 +54,14 @@ public class SPMethod {
         return transpositionMatrix;
     }
 
-    public static double start(Matrix matrix, Vectors startEigenVector, double eps){
+    public static void start(Matrix matrix, Vectors startEigenVector, double eps) throws IOException {
 
         Vectors eigenVector = matrix.multByVector(startEigenVector);
         eigenVector = normalizationVector(eigenVector);
 
         Matrix transpositionMatrix = transposition(matrix);
-        Vectors transpositionEigenVector = transpositionMatrix.multByVector(startEigenVector);
 
-        eigenVector = normalizationVector(eigenVector);
+        Vectors transpositionEigenVector = transpositionMatrix.multByVector(startEigenVector);
         transpositionEigenVector = normalizationVector(transpositionEigenVector);
 
         double eigenValue = multByScalar(eigenVector, transpositionEigenVector) / multByScalar(startEigenVector, transpositionEigenVector);
@@ -78,11 +80,20 @@ public class SPMethod {
 
         }
 
-        for (int i = 0; i < eigenVector.getRank(); i++)
-            System.out.println(eigenVector.get(i)/eigenVector.get(0));
-        System.out.println();
+        FileWriter fileWriter = new FileWriter("src/com/numericalCore/task1/Program/tempOutput.txt");
 
-        return eigenValue;
+        fileWriter.append(String.format("%.6f",eigenValue) + " ");
+
+        for (int i = 0; i < eigenVector.getRank(); i++)
+            fileWriter.append(String.format("%.6f",eigenVector.get(i)/eigenVector.get(0)) + " ");
+
+        for (int i = 0; i < transpositionEigenVector.getRank(); i++)
+            fileWriter.append(String.format("%.6f",transpositionEigenVector.get(i)/transpositionEigenVector.get(0)) + " ");
+
+        fileWriter.flush();
+
+        System.out.println(eigenValue);
+
     }
 
 }

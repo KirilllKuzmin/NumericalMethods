@@ -22,7 +22,7 @@ public class ExhaustionMethod {
 
         for (int i = 0; i < firstVector.getRank(); i++)
             for (int j = 0; j < firstVector.getRank(); j++)
-                resultVector.set(i, j, firstVector.get(j) * secondVector.get(i));
+                resultVector.set(i, j, firstVector.get(i) * secondVector.get(j));
 
         return resultVector;
 
@@ -43,6 +43,10 @@ public class ExhaustionMethod {
     public static Matrix start(Matrix matrix, double majorEigenValue, Vectors majorEigenVector, Vectors majorTransEigenVector) {
 
         double intermediateEigenValue = majorEigenValue / scalarProduct(majorEigenVector, majorTransEigenVector);
+
+        if (Math.abs(intermediateEigenValue) > Math.pow(10, 6)) {
+            return matrix;
+        }
 
         Matrix subtractibleMatrix = productOfVectors(majorEigenVector, majorTransEigenVector);
 
