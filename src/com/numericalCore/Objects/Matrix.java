@@ -42,6 +42,14 @@ public class Matrix {
         }
     }
 
+    public void multByConstant(double constant) {
+
+        for (int i = 0; i < rank; i++)
+            for (int j = 0; j < rank; j++)
+                matrix[i][j] *= constant;
+
+    }
+
     public double get(int i, int j) { return matrix[i][j]; }
 
     public int getRank() { return rank; }
