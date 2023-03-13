@@ -45,7 +45,7 @@ public class ExhaustionMethod {
         double intermediateEigenValue = majorEigenValue / scalarProduct(majorEigenVector, majorTransEigenVector);
 
         if (Math.abs(intermediateEigenValue) > Math.pow(10, 6)) {
-            return matrix;
+            return null;
         }
 
         Matrix subtractibleMatrix = productOfVectors(majorEigenVector, majorTransEigenVector);
